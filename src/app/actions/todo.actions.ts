@@ -2,7 +2,7 @@ import {Action} from '@ngrx/store';
 
 export enum ActionTypes {
   ADD = '[Todo] Add',
-  REMOVE = '[Todo] Remove',
+  DELETE = '[Todo] Delete',
   UPDATE = '[Todo] Update',
   MARK_DONE = '[Todo] Mark done',
 }
@@ -13,8 +13,8 @@ export class AddTodoAction implements Action {
   constructor(public payload: { title: string }) {}
 }
 
-export class RemoveTodoAction implements Action {
-  readonly type = ActionTypes.REMOVE;
+export class DeleteTodoAction implements Action {
+  readonly type = ActionTypes.DELETE;
 
   constructor(public payload: { id: string }) {}
 }
