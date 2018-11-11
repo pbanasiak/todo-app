@@ -12,25 +12,34 @@ export class TodoComponent implements OnInit {
 
   @Input() todo: Todo;
   title: FormControl;
+  isDone: FormControl;
+  editable: boolean;
 
   constructor(private service: TodoService) {
     this.title = new FormControl('');
+    this.isDone = new FormControl(false);
+    this.isDone.valueChanges
+      .subscribe(state => {
+        this.service.changeIsDone(this.todo.id);
+      });
+    this.editable = false;
   }
 
   ngOnInit() {
-    this.title.setValue(this.todo.title);
+    this.title.setValue(this.todo.title, {emitEvent: false});
+    this.isDone.setValue(this.todo.isDone, {emitEvent: false});
   }
 
   deleteTodo() {
     this.service.deleteTodo(this.todo.id);
   }
 
-  changeIsDone() {
-    this.service.changeIsDone(this.todo.id);
-  }
-
   updateTodo() {
     this.service.updateTodo(this.todo.id, this.title.value);
+  }
+
+  edit() {
+    this.editable = true;
   }
 
 }

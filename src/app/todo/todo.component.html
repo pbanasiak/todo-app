@@ -1,7 +1,13 @@
-<div>
-  <input type="text" [formControl]="title" (keyup.enter)="updateTodo()"/>
-
-  <label> {{todo.title}} {{todo.isDone}} {{todo.dateAdded}}</label>
-  <button (click)="deleteTodo()"></button>
-  <button (click)="changeIsDone()"></button>
-</div>
+<mat-card class="todo-card">
+  <mat-card-title>
+    <div>
+      <input type="checkbox" class="done-checkbox" [formControl]="isDone"/>
+      <input mat-input class="todo-input" type="text" [formControl]="title" (keyup.enter)="updateTodo()"  [hidden]="!editable">
+      <label [class.done]="todo.isDone" (dblclick)="edit()"  [hidden]="editable">{{ todo.title }}</label>
+    </div>
+  </mat-card-title>
+  <mat-card-content class="todo-properties">
+    <label>{{todo.dateAdded | date: 'EEE, dd MMM HH:mm'}}</label>
+    <button  class="fas fa-trash delete-button" (click)="deleteTodo()"></button>
+  </mat-card-content>
+</mat-card>

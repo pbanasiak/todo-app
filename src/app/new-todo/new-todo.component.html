@@ -1,4 +1,4 @@
-<p>
-  new-todo works!
-</p>
-<input type="text" [formControl]="title" (keyup.enter)="addTodo()"/>
+<mat-card class="new-todo">
+<input class="new-todo-input" matInput placeholder="New task to do be done" type="text" [formControl]="title"
+       (keyup.enter)="addTodo()">
+</mat-card>

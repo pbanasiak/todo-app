@@ -8,6 +8,16 @@ import {TodoComponent} from './todo/todo.component';
 import {StoreModule} from '@ngrx/store';
 import {todoReducer} from './reducers/todo.reducer';
 import {NewTodoComponent} from './new-todo/new-todo.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatFormFieldModule,
+  MatToolbarModule,
+  MatInputModule,
+  MatListModule,
+  MatButtonModule,
+  MatCheckboxModule,
+  MatCardModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -20,6 +30,14 @@ import {NewTodoComponent} from './new-todo/new-todo.component';
     BrowserModule,
     StoreModule.forRoot({todoReducer}),
     ReactiveFormsModule,
+    NoopAnimationsModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatListModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
