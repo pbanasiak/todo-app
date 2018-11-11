@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Todo} from './todo';
-import {AddTodoAction, DeleteTodoAction, UpdateTodoAction, MarkDoneAction} from './actions/todo.actions';
+import {AddTodoAction, DeleteTodoAction, UpdateTodoAction, ChangeIsDoneAction} from './actions/todo.actions';
 import {Store} from '@ngrx/store';
 import {TodoState} from './todo.state';
 import {Observable} from 'rxjs';
@@ -24,8 +24,8 @@ export class TodoService {
     this.store.dispatch(addTodoAction);
   }
 
-  deleteTodo(todo: Todo): void {
-    const deleteTodoAction = new DeleteTodoAction(null);
+  deleteTodo(id: number): void {
+    const deleteTodoAction = new DeleteTodoAction(id);
     this.store.dispatch(deleteTodoAction);
   }
 
@@ -34,8 +34,8 @@ export class TodoService {
     this.store.dispatch(updateTodoAction);
   }
 
-  markDone(todo: Todo): void {
-    const markDoneAction = new MarkDoneAction(null);
-    this.store.dispatch(markDoneAction);
+  changeIsDone(id: number): void {
+    const changeIsDoneAction = new ChangeIsDoneAction(id);
+    this.store.dispatch(changeIsDoneAction);
   }
 }

@@ -5,7 +5,7 @@ export enum ActionTypes {
   ADD = '[Todo] Add',
   DELETE = '[Todo] Delete',
   UPDATE = '[Todo] Update',
-  MARK_DONE = '[Todo] Mark done',
+  CHANGE_IS_DONE = '[Todo] Change is done',
 }
 
 export class AddTodoAction implements Action {
@@ -18,7 +18,7 @@ export class AddTodoAction implements Action {
 export class DeleteTodoAction implements Action {
   readonly type = ActionTypes.DELETE;
 
-  constructor(public payload: { id: string }) {
+  constructor(public id: number) {
   }
 }
 
@@ -29,10 +29,10 @@ export class UpdateTodoAction implements Action {
   }
 }
 
-export class MarkDoneAction implements Action {
-  readonly type = ActionTypes.MARK_DONE;
+export class ChangeIsDoneAction implements Action {
+  readonly type = ActionTypes.CHANGE_IS_DONE;
 
-  constructor(public payload: { id: string }) {
+  constructor(public id: number) {
   }
 }
 
@@ -40,4 +40,4 @@ export type TodoActionType =
   AddTodoAction |
   DeleteTodoAction |
   UpdateTodoAction |
-  MarkDoneAction
+  ChangeIsDoneAction

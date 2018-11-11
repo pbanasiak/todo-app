@@ -16,7 +16,8 @@ export function todoReducer(state: TodoState = initialState, action: TodoActionT
       };
     case ActionTypes.DELETE:
       return {
-        ...state
+        ...state,
+        todos: state.todos.filter(todo => todo.id !== action.id)
       };
 
     case ActionTypes.UPDATE:
@@ -24,11 +25,20 @@ export function todoReducer(state: TodoState = initialState, action: TodoActionT
         ...state
       };
 
-    case ActionTypes.MARK_DONE:
+    case ActionTypes.CHANGE_IS_DONE:
       return {
-        ...state
+        ...state,
+        todos: state.todos.map(todo => {
+          if (todo.id === action.id) {
+            return {
+              ...todo,
+              isDone: !todo.isDone
+            };
+          } else {
+            return todo;
+          }
+        })
       };
-
     default:
       return state;
   }
