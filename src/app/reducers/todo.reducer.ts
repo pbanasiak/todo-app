@@ -10,8 +10,8 @@ export function todoReducer(state: TodoState = initialState, action: TodoActionT
       return {
         ...state,
         todos: [
-          ...state.todos,
-          action.todo
+          action.todo,
+          ...state.todos
         ]
       };
     case ActionTypes.DELETE:
