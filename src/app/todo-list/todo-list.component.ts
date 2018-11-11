@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Todo} from '../todo';
-import { Store } from '@ngrx/store';
-import {TodoState} from '../todo-state';
+import {Store} from '@ngrx/store';
+import {TodoState} from '../todo.state';
+import {observable} from 'rxjs';
+import {TodoService} from '../todo.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,8 +12,9 @@ import {TodoState} from '../todo-state';
 })
 export class TodoListComponent implements OnInit {
 
-  todos: Todo[];
-  constructor( private store: Store<TodoState>) {
+  todos: Todo[] = [];
+
+  constructor(private service: TodoService) {
     this.readTodoState();
   }
 
@@ -19,7 +22,7 @@ export class TodoListComponent implements OnInit {
   }
 
   private readTodoState() {
-    this.store.select(state => state.todos)
+    this.service.getTodos()
       .subscribe(todos => {
         this.todos = todos;
       });
