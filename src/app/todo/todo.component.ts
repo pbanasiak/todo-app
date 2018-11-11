@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Todo} from '../todo';
 import {TodoService} from '../todo.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-todo',
@@ -10,11 +11,14 @@ import {TodoService} from '../todo.service';
 export class TodoComponent implements OnInit {
 
   @Input() todo: Todo;
+  title: FormControl;
 
   constructor(private service: TodoService) {
+    this.title = new FormControl('');
   }
 
   ngOnInit() {
+    this.title.setValue(this.todo.title);
   }
 
   deleteTodo() {
@@ -23,6 +27,10 @@ export class TodoComponent implements OnInit {
 
   changeIsDone() {
     this.service.changeIsDone(this.todo.id);
+  }
+
+  updateTodo() {
+    this.service.updateTodo(this.todo.id, this.title.value);
   }
 
 }

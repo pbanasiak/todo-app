@@ -29,8 +29,8 @@ export class TodoService {
     this.store.dispatch(deleteTodoAction);
   }
 
-  updateTodo(todo: Todo): void {
-    const updateTodoAction = new UpdateTodoAction(null);
+  updateTodo(id: number, title: string): void {
+    const updateTodoAction = new UpdateTodoAction(id, title);
     this.store.dispatch(updateTodoAction);
   }
 

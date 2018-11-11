@@ -1,5 +1,7 @@
 <div>
-  <label>{{todo.title}} {{todo.isDone}} {{todo.dateAdded}}</label>
+  <input type="text" [formControl]="title" (keyup.enter)="updateTodo()"/>
+
+  <label> {{todo.title}} {{todo.isDone}} {{todo.dateAdded}}</label>
   <button (click)="deleteTodo()"></button>
   <button (click)="changeIsDone()"></button>
 </div>

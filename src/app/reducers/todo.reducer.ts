@@ -22,7 +22,17 @@ export function todoReducer(state: TodoState = initialState, action: TodoActionT
 
     case ActionTypes.UPDATE:
       return {
-        ...state
+        ...state,
+        todos: state.todos.map(todo => {
+          if (todo.id === action.id) {
+            return {
+              ...todo,
+              title: action.title
+            };
+          } else {
+            return todo;
+          }
+        })
       };
 
     case ActionTypes.CHANGE_IS_DONE:

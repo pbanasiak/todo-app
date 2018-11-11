@@ -25,7 +25,7 @@ export class DeleteTodoAction implements Action {
 export class UpdateTodoAction implements Action {
   readonly type = ActionTypes.UPDATE;
 
-  constructor(public payload: { id: string; title: string }) {
+  constructor(public id: number, public title: string) {
   }
 }
 
