@@ -1,27 +1,49 @@
 # TodoApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
+## Project Subject
 
-## Development server
+* Creating new todo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Displaying list of todos
 
-## Code scaffolding
+* Updating todo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Deleting todo
 
-## Build
+## Requirements
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* Angular ^6.0.0
 
-## Running unit tests
+* Angular CLI
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* NgRX for state management
 
-## Running end-to-end tests
+* Todo's data must be stored in local storage of the browser
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* Use Reactive Forms
 
-## Further help
+* Use SCSS
+ 
+## Guidelines
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Create your app using Angular CLI
+
+* Create a Todo Class with properties: title, dateAdded, isDone 
+
+* Create a Todo Service that will expose api to the components
+
+* Create tests where necessary 
+
+* You may use Angular Material library
+
+### Quick start
+
+```bash
+# Install the dependencies:
+npm install
+
+# start the application
+ng serve --open
+```
+
+### [Live Demo](https://pbanasiak-todo-app.firebaseapp.com/)
