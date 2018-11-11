@@ -6,6 +6,7 @@ export enum ActionTypes {
   DELETE = '[Todo] Delete',
   UPDATE = '[Todo] Update',
   CHANGE_IS_DONE = '[Todo] Change is done',
+  LOAD_TODOS = '[Todo] Load todos',
 }
 
 export class AddTodoAction implements Action {
@@ -36,8 +37,16 @@ export class ChangeIsDoneAction implements Action {
   }
 }
 
+export class LoadTodosAction implements Action {
+  readonly type = ActionTypes.LOAD_TODOS;
+
+  constructor(public todos: Todo[]) {
+  }
+}
+
 export type TodoActionType =
   AddTodoAction |
   DeleteTodoAction |
   UpdateTodoAction |
-  ChangeIsDoneAction
+  ChangeIsDoneAction |
+  LoadTodosAction;

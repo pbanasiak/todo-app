@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Todo} from './todo';
-import {AddTodoAction, DeleteTodoAction, UpdateTodoAction, ChangeIsDoneAction} from './actions/todo.actions';
+import {AddTodoAction, DeleteTodoAction, UpdateTodoAction, ChangeIsDoneAction, LoadTodosAction} from './actions/todo.actions';
 import {Store} from '@ngrx/store';
 import {TodoState} from './todo.state';
 import {Observable} from 'rxjs';
@@ -11,7 +11,20 @@ import {getTodos} from './selectors/todo.selectors';
 })
 export class TodoService {
 
+  public static readonly LOCAL_STORAGE_KEY = 'todosKey';
+
   constructor(private store: Store<TodoState>) {
+    let todos = JSON.parse(localStorage.getItem(TodoService.LOCAL_STORAGE_KEY));
+    if (todos == null) {
+      todos = [];
+    }
+    const loadTodosAction = new LoadTodosAction(todos);
+    this.store.dispatch(loadTodosAction);
+    this.syncTodosToLocalStorage();
+  }
+
+  syncTodosToLocalStorage(): void {
+    this.store.select(getTodos).subscribe(todos => localStorage.setItem(TodoService.LOCAL_STORAGE_KEY, JSON.stringify(todos)));
   }
 
   getTodos(): Observable<Todo[]> {

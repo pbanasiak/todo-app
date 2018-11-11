@@ -49,6 +49,13 @@ export function todoReducer(state: TodoState = initialState, action: TodoActionT
           }
         })
       };
+
+    case ActionTypes.LOAD_TODOS:
+      return {
+        ...state,
+        todos: action.todos
+      };
+
     default:
       return state;
   }
